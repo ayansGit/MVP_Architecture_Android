@@ -1,7 +1,5 @@
 package com.mvpdemoapp;
 
-import java.util.Collection;
-
 public interface AppPinConf {
 
     interface View{
