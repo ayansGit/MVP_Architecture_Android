@@ -10,6 +10,7 @@ public interface LoginConf {
 
         void showLoader();
         void hideLoader();
+        void showSuccessMessage(String message);
         void showError(String message);
         void showValidationError(String message, Integer id);
         void navigateToNextPage();
@@ -19,8 +20,8 @@ public interface LoginConf {
 
         void defaultSettings();
         void addValidator(EditText editText, Type type);
-        void validateField(String value, Type type);
-        void validateField(String value, Type type, Integer id);
+        Boolean validateField(String value, Type type);
+        Boolean validateField(String value, Type type, Integer id);
         void validateOnSubmit();
         void doLogin(String username, String password);
         void loadNextScreen();

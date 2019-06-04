@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 
 public interface RestInterface {
 
-    @POST
+    @POST("user/signin")
     @FormUrlEncoded
     Call<LoginResponse> login(@Field(value = "username", encoded = true) String username,
                               @Field(value = "password", encoded = true) String password,

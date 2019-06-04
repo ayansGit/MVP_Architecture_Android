@@ -4,7 +4,7 @@ import retrofit2.Response;
 
 public interface RetrofitListener {
 
-    void onSuccess(Response response, String method);
+    void onSuccess(Response response, Method method);
     void onFailure(String message);
 
 }

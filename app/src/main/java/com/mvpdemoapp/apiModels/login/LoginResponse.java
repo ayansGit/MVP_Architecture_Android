@@ -16,9 +16,8 @@ public class LoginResponse implements Parcelable
     @SerializedName("token")
     @Expose
     private String token;
-    @SerializedName("data")
-    @Expose
-    private LoginData data;
+
+    //private LoginData data;
     @SerializedName("message")
     @Expose
     private String message;
@@ -42,7 +41,7 @@ public class LoginResponse implements Parcelable
     protected LoginResponse(Parcel in) {
         this.status = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.token = ((String) in.readValue((String.class.getClassLoader())));
-        this.data = ((LoginData) in.readValue((LoginData.class.getClassLoader())));
+        //this.data = ((LoginData) in.readValue((LoginData.class.getClassLoader())));
         this.message = ((String) in.readValue((String.class.getClassLoader())));
     }
 
@@ -65,13 +64,13 @@ public class LoginResponse implements Parcelable
         this.token = token;
     }
 
-    public LoginData getData() {
+    /*public LoginData getData() {
         return data;
     }
 
     public void setData(LoginData data) {
         this.data = data;
-    }
+    }*/
 
     public String getMessage() {
         return message;
@@ -84,7 +83,7 @@ public class LoginResponse implements Parcelable
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(status);
         dest.writeValue(token);
-        dest.writeValue(data);
+        //dest.writeValue(data);
         dest.writeValue(message);
     }
 

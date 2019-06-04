@@ -4,7 +4,8 @@ import com.mvpdemoapp.apiModels.login.LoginResponse;
 
 public class LoginModel {
 
-    LoginResponse loginResponse;
+    private LoginResponse loginResponse;
+    private Boolean isFieldValid = false;
 
     public LoginResponse getLoginResponse() {
         return loginResponse;
@@ -12,5 +13,13 @@ public class LoginModel {
 
     public void setLoginResponse(LoginResponse loginResponse) {
         this.loginResponse = loginResponse;
+    }
+
+    public Boolean getFieldValid() {
+        return isFieldValid;
+    }
+
+    public void setFieldValid(Boolean fieldValid) {
+        isFieldValid = fieldValid;
     }
 }

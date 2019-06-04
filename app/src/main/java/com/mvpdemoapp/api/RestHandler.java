@@ -46,16 +46,15 @@ public class RestHandler {
         return retrofit.create(RestInterface.class);
     }
 
-    public void makeHttpRequest(Call call, final String method){
+    public void makeHttpRequest(Call call, final Method method){
 
 
         call.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
 
-                if(response.code() == 200){
-                    retrofitListener.onSuccess(response,method);
-                }
+                retrofitListener.onSuccess(response,method);
+
             }
 
             @Override
