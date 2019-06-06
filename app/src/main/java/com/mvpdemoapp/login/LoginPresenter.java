@@ -84,6 +84,7 @@ public class LoginPresenter implements LoginConf.Presenter, Validate.OnValidate,
     @Override
     public void loadNextScreen() {
 
+        view.navigateToNextPage();
     }
 
     @Override
@@ -117,6 +118,7 @@ public class LoginPresenter implements LoginConf.Presenter, Validate.OnValidate,
                 if (loginResponse != null) {
                     if (loginResponse.getStatus() == 200){
                         view.showSuccessMessage(loginResponse.getMessage());
+                        loadNextScreen();
                     }else {
                         view.showError(loginResponse.getMessage());
                     }

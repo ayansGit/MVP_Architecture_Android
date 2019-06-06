@@ -1,5 +1,6 @@
 package com.mvpdemoapp.login;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mvpdemoapp.R;
+import com.mvpdemoapp.dashboard.DashboardActivity;
 import com.mvpdemoapp.validator.Type;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginConf.View{
@@ -85,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void showLoader() {
 
+        findViewById(R.id.loader).setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -115,6 +118,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void navigateToNextPage() {
 
+        Intent intent = new Intent(this, DashboardActivity.class);
+        startActivity(intent);
     }
 
 }

@@ -2,6 +2,7 @@ package com.mvpdemoapp.dashboard;
 
 import android.widget.EditText;
 
+import com.mvpdemoapp.adapter.company.CompanyAdapter;
 import com.mvpdemoapp.validator.Type;
 
 public interface DashboardConf {
@@ -10,6 +11,7 @@ public interface DashboardConf {
 
         void showLoader();
         void hideLoader();
+        void setRecyclerAdapter(CompanyAdapter adapter);
         void showSuccessMessage(String message);
         void showError(String message);
         void navigateToNextPage();
@@ -18,7 +20,7 @@ public interface DashboardConf {
     interface Presenter{
 
         void defaultSettings();
-        void callCompanyList();
+        void getCompanyList();
         void loadNextScreen();
     }
 }

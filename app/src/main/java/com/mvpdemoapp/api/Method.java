@@ -1,5 +1,5 @@
 package com.mvpdemoapp.api;
 
 public enum Method {
-    LOGIN
+    LOGIN, GET_COMPANY
 }

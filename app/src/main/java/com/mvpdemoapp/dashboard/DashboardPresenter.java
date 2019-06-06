@@ -1,43 +1,52 @@
 package com.mvpdemoapp.dashboard;
 
 import android.content.Context;
-import android.widget.EditText;
 
+import com.mvpdemoapp.adapter.company.CompanyAdapter;
 import com.mvpdemoapp.api.Method;
 import com.mvpdemoapp.api.RestHandler;
 import com.mvpdemoapp.api.RetrofitListener;
+import com.mvpdemoapp.apiModels.companyList.CompanyData;
+import com.mvpdemoapp.apiModels.companyList.CompanyListResponse;
 import com.mvpdemoapp.apiModels.login.LoginResponse;
-import com.mvpdemoapp.login.LoginConf;
 import com.mvpdemoapp.login.LoginModel;
-import com.mvpdemoapp.validator.Type;
-import com.mvpdemoapp.validator.Validate;
-import com.mvpdemoapp.validator.Validator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Response;
 
 public class DashboardPresenter implements DashboardConf.Presenter, RetrofitListener {
 
-    DashboardConf.View view;
-    LoginModel loginModel;
-    Context context;
-    RestHandler restHandler;
+    private DashboardConf.View view;
+    private LoginModel loginModel;
+    private Context context;
+    private RestHandler restHandler;
+    private CompanyAdapter companyAdapter;
+    private List<CompanyData> companyDataList;
+
 
     public DashboardPresenter(DashboardConf.View view, Context context) {
         this.view = view;
         this.context = context;
         loginModel = new LoginModel();
         restHandler = new RestHandler(this, context);
+        companyDataList = new ArrayList<>();
+        companyAdapter = new CompanyAdapter(context, companyDataList);
     }
 
     @Override
     public void defaultSettings() {
 
         view.hideLoader();
+        view.setRecyclerAdapter(companyAdapter);
     }
 
     @Override
-    public void callCompanyList() {
+    public void getCompanyList() {
 
+        view.showLoader();
+        restHandler.makeHttpRequest(restHandler.getClient().getCompany(), Method.GET_COMPANY);
     }
 
 
@@ -51,17 +60,21 @@ public class DashboardPresenter implements DashboardConf.Presenter, RetrofitList
     public void onSuccess(Response response, Method method) {
 
         view.hideLoader();
-        switch (method) {
-            case LOGIN:
-                LoginResponse loginResponse = (LoginResponse) response.body();
-                if (loginResponse != null) {
-                    if (loginResponse.getStatus() == 200){
-                        view.showSuccessMessage(loginResponse.getMessage());
-                    }else {
-                        view.showError(loginResponse.getMessage());
-                    }
 
+        switch (method) {
+            case GET_COMPANY:
+                CompanyListResponse companyListResponse = (CompanyListResponse) response.body();
+                if (companyListResponse != null && companyListResponse.getStatus() == 200) {
+                    if(companyListResponse.getData()!= null && companyListResponse.getData().size()>0){
+                        companyDataList.clear();
+                        companyDataList.addAll(companyListResponse.getData());
+                        companyAdapter.notifyDataSetChanged();
+                    }
+                    view.showSuccessMessage(companyListResponse.getMessage());
+                } else {
+                    view.showError(companyListResponse.getMessage());
                 }
+
                 break;
         }
     }
