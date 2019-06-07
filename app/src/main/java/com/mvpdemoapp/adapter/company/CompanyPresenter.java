@@ -10,13 +10,23 @@ import java.util.List;
 public class CompanyPresenter implements CompanyAdapterConfig.Presenter {
 
 
-    private List<CompanyData> companyDataList;
     private Context context;
+    private List<CompanyData> companyDataList;
+    private CompanyAdapterConfig.OnItemClickListener onItemClickListener;
+
+    public CompanyPresenter() {
+    }
 
     public CompanyPresenter(List<CompanyData> companyDataList, Context context) {
+        this.context = context;
         this.companyDataList = companyDataList;
     }
 
+    public CompanyPresenter(Context context, List<CompanyData> companyDataList, CompanyAdapterConfig.OnItemClickListener onItemClickListener) {
+        this.context = context;
+        this.companyDataList = companyDataList;
+        this.onItemClickListener = onItemClickListener;
+    }
 
     @Override
     public void onBindCompanyViewHolder(CompanyViewHolder companyViewHolder, int position) {
@@ -30,4 +40,12 @@ public class CompanyPresenter implements CompanyAdapterConfig.Presenter {
     public int getItemCount() {
         return companyDataList.size();
     }
+
+    @Override
+    public void onItemClick(int position) {
+
+        onItemClickListener.setOnItemClickListener(companyDataList.get(position));
+    }
+
+
 }

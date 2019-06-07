@@ -1,5 +1,7 @@
 package com.mvpdemoapp.adapter.company;
 
+import com.mvpdemoapp.apiModels.companyList.CompanyData;
+
 public interface CompanyAdapterConfig {
 
     interface View {
@@ -11,6 +13,10 @@ public interface CompanyAdapterConfig {
     interface Presenter {
         void onBindCompanyViewHolder(CompanyViewHolder companyViewHolder, int position);
         int getItemCount();
+        void onItemClick(int position);
+    }
 
+    interface OnItemClickListener{
+        void setOnItemClickListener(CompanyData companyData);
     }
 }

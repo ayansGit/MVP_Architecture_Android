@@ -1,8 +1,10 @@
 package com.mvpdemoapp.dashboard;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.mvpdemoapp.adapter.company.CompanyAdapter;
+import com.mvpdemoapp.adapter.company.CompanyAdapterConfig;
 import com.mvpdemoapp.api.Method;
 import com.mvpdemoapp.api.RestHandler;
 import com.mvpdemoapp.api.RetrofitListener;
@@ -16,7 +18,7 @@ import java.util.List;
 
 import retrofit2.Response;
 
-public class DashboardPresenter implements DashboardConf.Presenter, RetrofitListener {
+public class DashboardPresenter implements DashboardConf.Presenter, RetrofitListener, CompanyAdapterConfig.OnItemClickListener {
 
     private DashboardConf.View view;
     private LoginModel loginModel;
@@ -32,7 +34,7 @@ public class DashboardPresenter implements DashboardConf.Presenter, RetrofitList
         loginModel = new LoginModel();
         restHandler = new RestHandler(this, context);
         companyDataList = new ArrayList<>();
-        companyAdapter = new CompanyAdapter(context, companyDataList);
+        companyAdapter = new CompanyAdapter(context, companyDataList, this);
     }
 
     @Override
@@ -84,5 +86,11 @@ public class DashboardPresenter implements DashboardConf.Presenter, RetrofitList
 
         view.hideLoader();
         view.showError(message);
+    }
+
+    @Override
+    public void setOnItemClickListener(CompanyData companyData) {
+
+        Toast.makeText(context, companyData.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

@@ -14,15 +14,22 @@ import java.util.List;
 public class CompanyAdapter extends RecyclerView.Adapter<CompanyViewHolder> {
 
     CompanyAdapterConfig.Presenter presenter;
+    CompanyAdapterConfig.OnItemClickListener onItemClickListener;
 
     public CompanyAdapter(Context context, List<CompanyData> companyDataList) {
         presenter = new CompanyPresenter(companyDataList, context);
     }
 
+    public CompanyAdapter(Context context, List<CompanyData> companyDataList,
+                          CompanyAdapterConfig.OnItemClickListener onItemClickListener) {
+
+        presenter = new CompanyPresenter(context,companyDataList,onItemClickListener);
+    }
+
     @NonNull
     @Override
     public CompanyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new CompanyViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_company_list_layout,viewGroup,false));
+        return new CompanyViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_company_list_layout,viewGroup,false),presenter);
     }
 
     @Override
