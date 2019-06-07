@@ -23,7 +23,7 @@ public class CompanyPresenter implements CompanyAdapterConfig.Presenter {
 
         companyViewHolder.setCompanyTitle(companyDataList.get(position).getTitle());
         companyViewHolder.setCompanyDescription(companyDataList.get(position).getDescription());
-        companyViewHolder.setCompanyImage(Constants.IMAGE_BASE_URL + "company/" + companyDataList.get(position).getImage(), context);
+        companyViewHolder.setCompanyImage(Constants.IMAGE_BASE_URL + "company/" + companyDataList.get(position).getImage());
     }
 
     @Override

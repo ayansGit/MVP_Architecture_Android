@@ -1,11 +1,9 @@
 package com.mvpdemoapp.adapter.company;
 
-import android.content.Context;
-
 public interface CompanyAdapterConfig {
 
     interface View {
-        void setCompanyImage(String imagePath, Context context);
+        void setCompanyImage(String imagePath);
         void setCompanyTitle(String companyTitle);
         void setCompanyDescription(String companyDescription);
     }

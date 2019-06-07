@@ -1,13 +1,11 @@
 package com.mvpdemoapp.adapter.company;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mvpdemoapp.R;
 import com.squareup.picasso.Picasso;
 
@@ -27,7 +25,7 @@ public class CompanyViewHolder extends RecyclerView.ViewHolder implements Compan
     }
 
     @Override
-    public void setCompanyImage(String imagePath, Context context) {
+    public void setCompanyImage(String imagePath) {
         Picasso.get().load(imagePath).into(ivCompanyLogo);
 
     }
