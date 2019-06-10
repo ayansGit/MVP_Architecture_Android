@@ -54,7 +54,7 @@ public class DashboardPresenter implements DashboardConf.Presenter, RetrofitList
 
     @Override
     public void loadNextScreen() {
-
+        view.navigateToNextPage();
     }
 
 
@@ -91,6 +91,6 @@ public class DashboardPresenter implements DashboardConf.Presenter, RetrofitList
     @Override
     public void setOnItemClickListener(CompanyData companyData) {
 
-        Toast.makeText(context, companyData.getTitle(), Toast.LENGTH_SHORT).show();
+        loadNextScreen();
     }
 }

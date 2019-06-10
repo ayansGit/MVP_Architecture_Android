@@ -1,5 +1,6 @@
 package com.mvpdemoapp.dashboard;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.view.View;
 
 import com.mvpdemoapp.R;
 import com.mvpdemoapp.adapter.company.CompanyAdapter;
+import com.mvpdemoapp.ecommerce.EcommerceActivity;
 
 public class DashboardActivity extends AppCompatActivity implements DashboardConf.View {
 
@@ -54,5 +56,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardCon
     @Override
     public void navigateToNextPage() {
 
+        Intent intent = new Intent(this, EcommerceActivity.class);
+        startActivity(intent);
     }
 }
