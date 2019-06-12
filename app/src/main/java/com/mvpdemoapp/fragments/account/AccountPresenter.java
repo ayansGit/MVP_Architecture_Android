@@ -1,10 +1,10 @@
-package com.mvpdemoapp.fragments.cart;
+package com.mvpdemoapp.fragments.account;
 
-public class CartPresenter implements CartConf.Presenter {
+public class AccountPresenter implements AccountConf.Presenter {
 
-    private CartConf.View view;
+    private AccountConf.View view;
 
-    public CartPresenter(CartConf.View view) {
+    public AccountPresenter(AccountConf.View view) {
         this.view = view;
     }
 
@@ -15,7 +15,6 @@ public class CartPresenter implements CartConf.Presenter {
 
     @Override
     public void SetOnButtonClick(String message) {
-
         view.showOnButtonClick(message);
     }
 

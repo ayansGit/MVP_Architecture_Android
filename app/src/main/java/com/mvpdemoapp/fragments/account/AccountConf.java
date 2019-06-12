@@ -1,6 +1,7 @@
-package com.mvpdemoapp.fragments.cart;
+package com.mvpdemoapp.fragments.account;
 
-public interface CartConf {
+public interface AccountConf {
+
     interface View{
         void showLoader();
         void hideLoader();
