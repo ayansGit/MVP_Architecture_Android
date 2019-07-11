@@ -1,34 +1,22 @@
-package com.mvpdemoapp.fragments.account;
+package com.mvpdemoapp.fragments.demo;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Button;
 
 import com.mvpdemoapp.R;
 import com.mvpdemoapp.fragments.BaseFragment;
-import com.mvpdemoapp.fragments.demo.DemoFragment;
 
-public class AccountFragment extends BaseFragment implements AccountConf.View {
 
-    Button btClickHere;
-
+public class DemoFragment extends BaseFragment implements DemoConf.View {
     @Override
     protected int getLayout() {
-        return R.layout.fragment_account;
+        return R.layout.fragment_demo;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-        btClickHere = view.findViewById(R.id.btClickHere);
-        btClickHere.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.addFragment(new DemoFragment());
-            }
-        });
 
     }
 

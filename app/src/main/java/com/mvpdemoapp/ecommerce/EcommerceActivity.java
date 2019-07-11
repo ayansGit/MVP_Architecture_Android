@@ -15,6 +15,7 @@ import com.mvpdemoapp.fragments.BaseFragmentConf;
 public class EcommerceActivity extends AppCompatActivity implements EcommerceConf.View, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private EcommerceConf.Presenter presenter;
+    private static int BACKSTACK_COUNT = 0;
 
 
     @Override
@@ -53,22 +54,20 @@ public class EcommerceActivity extends AppCompatActivity implements EcommerceCon
     public void setFragment(BaseFragment fragment) {
 
         fragment.attachPresenter((BaseFragmentConf.Presenter) presenter);
-
         FragmentManager manager = getSupportFragmentManager();
+        for(int count = 0; count<BACKSTACK_COUNT;count++){
+            manager.popBackStack();
+        }
+        BACKSTACK_COUNT = 0;
         FragmentTransaction trans = manager.beginTransaction();
-        //trans.remove(fragment);
         trans.replace(R.id.container,fragment);
         trans.commit();
-        manager.popBackStack();
 
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.container,fragment)
-//                .commit();
     }
 
     @Override
     public void addFragment(BaseFragment fragment) {
+        BACKSTACK_COUNT++;
         fragment.attachPresenter((BaseFragmentConf.Presenter) presenter);
         getSupportFragmentManager()
                 .beginTransaction()
