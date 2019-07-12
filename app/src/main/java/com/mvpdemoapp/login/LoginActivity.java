@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         presenter.addValidator(etUsername,Type.USERNAME);
         presenter.addValidator(etPassword,Type.PASSWORD);
+
         presenter.defaultSettings();
     }
 

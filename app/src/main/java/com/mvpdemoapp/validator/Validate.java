@@ -109,5 +109,67 @@ public class Validate {
         return isValid;
     }
 
+    /**
+     * This method if for test case to validate email given by the user
+     * @return boolean value
+     */
+    public static boolean validateEmail(String value){
+        Boolean isValid = false;
+        String EMAIL_PATTERN =
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(value);
+        if(value.trim().isEmpty()){
+            isValid = false;
+            return isValid;
+        }else if(!matcher.matches()){
+            isValid = false;
+            return isValid;
+        }else {
+            isValid = true;
+            return isValid;
+        }
+
+    }
+
+    /**
+     * This method if for test case to validate password given by the user
+     * @return boolean value
+     */
+    public static boolean validatePassword(String value){
+        Boolean isValid = false;
+        if(value.trim().isEmpty()){
+            isValid = false;
+            return isValid;
+        }else {
+            isValid = true;
+            return isValid;
+        }
+
+    }
+
+    /**
+     * This method if for test case to validate username given by the user
+     * @return boolean value
+     */
+    public static boolean validateUsername(String value){
+        Boolean isValid = false;
+        String PATTERN = "^[a-zA-Z]*$";
+        Pattern usernamePattern = Pattern.compile(PATTERN);
+        Matcher usernameMatcher = usernamePattern.matcher(value);
+        if(!usernameMatcher.matches()){
+            isValid = false;
+            return isValid;
+        }else if(value.trim().isEmpty()){
+            isValid = false;
+            return isValid;
+        }else {
+            isValid = true;
+            return isValid;
+        }
+
+    }
+
 
 }
